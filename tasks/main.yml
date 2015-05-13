@@ -3,9 +3,18 @@
   yum: pkg=postfix state=installed
   when: ansible_os_family == 'RedHat'
 
+- name: Get rid of existing exim (Debian)
+  apt: name={{ item }} state=absent purge=yes
+  with_items:
+    - exim4-base
+    - exim4-config
+    - exim4-daemon-light
+  when: ansible_os_family == 'Debian'
+
 - name: Ensure postfix is installed (Debian).
   apt: pkg=postfix state=installed
   when: ansible_os_family == 'Debian'
+
 
 - name: Ensure postfix is started and enabled at boot.
   service: name=postfix state=started enabled=yes
