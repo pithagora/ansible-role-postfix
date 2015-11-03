@@ -5,6 +5,8 @@ sudo: required
 
 env:
   - SITE=test.yml
+before_install:
+  - sudo apt-get update -qq
 
 install:
   # Install Ansible.
