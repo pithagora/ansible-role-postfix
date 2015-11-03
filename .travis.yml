@@ -6,9 +6,6 @@ sudo: false
 env:
   - SITE=test.yml
 
-before_install:
-#  - apt-get update -qq
-
 install:
   # Install Ansible.
   - pip install ansible
